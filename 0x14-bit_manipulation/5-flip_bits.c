@@ -1,17 +1,24 @@
 #include "main.h"
-/**
- * clear_bit - function that sets the value of a bit to 0 at a given index
- * @n: pointer to number
- * @index: index position
- * Return: 1 if it worked, or -1 if an error occurred
-*/
-int clear_bit(unsigned long int *n, unsigned int index)
-{
-	unsigned long int bit = 0x01;
 
-	bit = ~(bit << index);
-	if (bit == 0x00)
-		return (-1);
-	*n &= bit;
-	return (1);
+/**
+ * flip_bits - returns the number of bits you would
+ * need to flip to get from one number to another
+ * @n: first input unsigned long
+ * @m: second input unsigned long
+ * Return: how many bits needed to flip
+ */
+unsigned int flip_bits(unsigned long int n, unsigned long int m)
+{
+	unsigned long int x = n ^ m;
+	int flip = 0;
+
+	while (x)
+	{
+		if (1 & x)
+			flip++;
+		x = x >> 1;
+	}
+
+	return (flip);
 }
+
